@@ -34,13 +34,10 @@ function getDetails($data, $name){
 }
 
 if(isset($name)){ 
-    getDetails($result, $name);
-    
+    getDetails($result, $name);   
 }
 
-//echo "data";
-
-/*
+/*      
 echo '<pre>';
 echo print_r($result);
 echo '</pre>';

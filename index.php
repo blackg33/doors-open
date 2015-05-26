@@ -27,6 +27,9 @@ require 'doorsOpen.php';
             <div id='map'>
                 
             </div>
+            <div id="details">
+                
+            </div>
         </div>
         
     </body>
@@ -123,10 +126,11 @@ require 'doorsOpen.php';
               //icon: 'images/cycling.png',
               title: coords[2]
             });
-           
+          //console.log(coords[2]);
            
            google.maps.event.addListener(markers, 'click', function() {
-               var venueName = coords[2];
+               var venueName = this.title;
+              // console.log(coords[2]);
                getData(venueName);
             });
     
@@ -144,8 +148,7 @@ require 'doorsOpen.php';
                         type: 'GET',
                         data: {name: name},
                         success: function(data) {
-                             console.log('success');
-                             console.log(data);
+                             $('#details').html(data);
                          }
                      });
         }

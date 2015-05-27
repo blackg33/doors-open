@@ -16,21 +16,51 @@ body, html, main {
 
   #details{
       background-color: white;
-      border: 1px solid red;
       display:none;
       height:548px;
       position: absolute;
       top:0;
       right:0;
-      width: 350px;
+      width: 400px;
   }
 
   #close{
+      color:black;
       padding:5px;
       position:absolute;
       top:0;
       left:0;
   }
+  
+  #close:hover{
+      color:#E60000;
+  }
+  
+  #title{
+      font-size: 20px;
+      margin:10px;
+      margin-left:45px;
+      margin-bottom:15px;
+      position: relative;
+      text-align: center;
+      top:17px;
+  }
+  
+  #address, #description, #date, #style, #website{
+      margin:10px;
+      position:relative;
+      top:15px;
+  }
+  
+  #website{
+      font-size:21px;
+      text-decoration: none;
+  }
+  
+  #website:hover{
+      color:#E60000;
+  }
+  
   
 .fixed_img{
     
@@ -56,9 +86,9 @@ body, html, main {
   }
   
   #search_box{
-      border-radius: 5px;
+      border-radius: 10px;
       height: 20px;
-      width: 200px;
+      width: 250px;
   }
   
   .search{

@@ -152,20 +152,44 @@ require 'doorsOpen.php';
         
         generateMarkers(all_buildings);
         
+        
        function getData(name){ 
         //console.log(name);   
-        //var theName = name;
+
         $.ajax({
                         url: 'doorsOpen.php',
                         type: 'GET',
+                        dataType:"json",
                         data: {name: name},
-                        success: function(data) {     
-                             $('#details').html(data);
+                        success: function(data) {  
+                      
+                           for(var i = 0; i < data.length; i++){
+                                var detail = data[i].split("|");                  
+                             }
+                            
+                          //   $('#details').html(detail[0]);
+                        
                              $('#details').css("display", "block");
+                             $('#details').append("<h2 id='title'></h2>");
+                             $('#title').html(detail[0]);
                              $( "#details" ).append( "<i id='close' class='fa fa-times fa-3x'></i>" ).css("display","block");
-                             $("#close").click(function(){
+                             $("body").on("click","#close", function(){
                                  $("#details").css("display","none");
-                             });                           
+                             });
+                             $('#details').append("<p id='address'></p>");
+                             $('#address').html(detail[1]);
+                             
+                             $('#details').append("<p id='date'></p>");
+                             $('#date').html("Built: " + detail[2]);
+                             
+                             $('#details').append("<p id='style'></p>");
+                             $('#style').html("Style: " + detail[4]);
+                             
+                             $('#details').append("<p id='description'></p>");
+                             $('#description').html(detail[3]);
+                             
+                             $('#details').append("<a target='_blank' href='' id='website'></a>");
+                             $('#website').html('Website').attr("href", detail[5]);
                          }
                      });
         }

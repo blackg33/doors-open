@@ -24,13 +24,19 @@ foreach($result['buildings'] as $item){
 $name = (isset($_GET['name']) ? $_GET['name'] : null);
 
 function getDetails($data, $name){
-
+    
+    $all_details = array();
+    
     foreach($data['buildings'] as $detail){
         if((string)$detail['dot_buildingName']==$name){
-            $details = $detail['dot_buildingName'] . "," . $detail['dot_Address']['dot_Latitude']; 
+            $details = $detail['dot_buildingName']. "|" . $detail['dot_Address']['dot_buildingAddress']
+                    . "|" . $detail['dot_Architecture']['dot_year'] . "|" .$detail['dot_FullDescription']
+                    . "|" .$detail['dot_Architecture']['dot_style']. "|" .$detail['dot_links']['dot_url'];
+            
+            $all_details[]=$details;
         }
     }
-  echo $details;
+    echo json_encode($all_details);
     
 }
 
@@ -40,9 +46,8 @@ if(isset($name)){
 
 
 
-   /*  
+ /*    
 echo '<pre>';
 echo print_r($result);
 echo '</pre>';
-
 */

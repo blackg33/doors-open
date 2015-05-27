@@ -7,6 +7,7 @@ require 'doorsOpen.php';
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Doors Open Toronto</title>
+        <link rel="stylesheet" href="css/font-awesome.min.css">
         <link href="css/reset.css" rel='stylesheet' type='text/css'/>
         <link href="css/style.css" rel='stylesheet' type='text/css'/>
     </head>
@@ -30,7 +31,7 @@ require 'doorsOpen.php';
                 </div>
                 
                 <div id="details">
-                  
+ 
                 </div>
 
             </div>
@@ -161,7 +162,7 @@ require 'doorsOpen.php';
                         success: function(data) {     
                              $('#details').html(data);
                              $('#details').css("display", "block");
-                             $( "#details" ).append( "<p id='close'>Test</p>" ).css("display","block");
+                             $( "#details" ).append( "<i id='close' class='fa fa-times fa-3x'></i>" ).css("display","block");
                              $("#close").click(function(){
                                  $("#details").css("display","none");
                              });                           

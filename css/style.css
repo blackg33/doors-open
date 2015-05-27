@@ -2,12 +2,33 @@ body, html, main {
    height: 100%;
 }
 
+#wrap{
+    position: relative;
+}
+
 #map{
     background-color:grey;
     height:548px;
+    position:relative;
+    //height:100%;
     width:100%;
 }
 
+  #details{
+      background-color: white;
+      border: 1px solid red;
+      display:none;
+      height:548px;
+      position: absolute;
+      top:0;
+      right:0;
+      width: 350px;
+  }
+
+  #close{
+      
+  }
+  
 .fixed_img{
     
     display:none;
@@ -40,12 +61,7 @@ body, html, main {
   .search{
       color:white;
   }
-  
-  #details{
-      background-color: white;
-      height:548px;
-      width: 400px;
-  }
+ 
 
 @media screen and (min-width: 600px){
    

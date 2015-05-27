@@ -24,11 +24,15 @@ require 'doorsOpen.php';
                 <!--<label class='search'>Find a building near you: </label>-->
                 <input id="search_box" type='text' placeholder='  Enter your location'></input>
             </div>
-            <div id='map'>
+            <div id="wrap">
+                <div id='map'>
+
+                </div>
                 
-            </div>
-            <div id="details">
-                
+                <div id="details">
+                  
+                </div>
+
             </div>
         </div>
         
@@ -54,13 +58,13 @@ require 'doorsOpen.php';
     };
     //CREATE NEW MAP OBJECT
     var map =new google.maps.Map(mapCanvas, options); 
-   
+   /*
      var marker = new google.maps.Marker({
         icon: 'img/here.png',
         position: myLatlng,
         map: map,
     });
-   
+   */
   
 /*--------------------GEOLOCATION----------------------*/
    /* if(navigator.geolocation){
@@ -91,6 +95,11 @@ require 'doorsOpen.php';
         var places = search_box.getPlaces();
         var bounds = new google.maps.LatLngBounds();
         var i, place;
+        var marker = new google.maps.Marker({
+        icon: 'img/here.png',
+        position: myLatlng,
+        map: map,
+    });
 
     //SET MARKER TO SEARCH LOCATION 
         for(i=0;place=places[i];i++){
@@ -102,7 +111,7 @@ require 'doorsOpen.php';
         }
 
         map.fitBounds(bounds);
-        map.setZoom(16); //SET ZOOM FOR NEW LOCATIONS
+        map.setZoom(15); //SET ZOOM FOR NEW LOCATIONS
     });
     //BIAS SEARCH RESULTS BASED ON WHATS IN CURRENT BOUNDS
     google.maps.event.addListener(map, 'bounds_changed', function() {
@@ -129,7 +138,9 @@ require 'doorsOpen.php';
           //console.log(coords[2]);
            
            google.maps.event.addListener(markers, 'click', function() {
-               var venueName = this.title;
+               
+              // $('#details').css("display", "block");
+                var venueName = this.title;
               // console.log(coords[2]);
                getData(venueName);
             });
@@ -141,23 +152,23 @@ require 'doorsOpen.php';
         generateMarkers(all_buildings);
         
        function getData(name){ 
-        console.log(name);   
+        //console.log(name);   
         //var theName = name;
         $.ajax({
                         url: 'doorsOpen.php',
                         type: 'GET',
                         data: {name: name},
-                        success: function(data) {
+                        success: function(data) {     
                              $('#details').html(data);
+                             $('#details').css("display", "block");
+                             $( "#details" ).append( "<p id='close'>Test</p>" ).css("display","block");
+                             $("#close").click(function(){
+                                 $("#details").css("display","none");
+                             });                           
                          }
                      });
         }
-                 
-        
-        
-        
-        
-        
+
 
         /* ADD INFO WINDOWS FOR AVAILABLE BIKES
         var info_window = new google.maps.InfoWindow({

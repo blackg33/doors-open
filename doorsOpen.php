@@ -24,23 +24,25 @@ foreach($result['buildings'] as $item){
 $name = (isset($_GET['name']) ? $_GET['name'] : null);
 
 function getDetails($data, $name){
-  
+
     foreach($data['buildings'] as $detail){
         if((string)$detail['dot_buildingName']==$name){
-            $details = $detail['dot_FullDescription'];              
+            $details = $detail['dot_buildingName'] . "," . $detail['dot_Address']['dot_Latitude']; 
         }
     }
   echo $details;
+    
 }
 
 if(isset($name)){ 
     getDetails($result, $name);   
 }
 
-/*      
+
+
+   /*  
 echo '<pre>';
 echo print_r($result);
 echo '</pre>';
 
 */
-
